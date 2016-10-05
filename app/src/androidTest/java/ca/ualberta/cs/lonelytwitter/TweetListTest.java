@@ -2,19 +2,24 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.test.ActivityInstrumentationTestCase2;
 import java.util.concurrent.TimeUnit;
-/**
- *
- */
 
+/**
+ * The type Tweet list test.
+ */
 public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
+
+    /**
+     * Instantiates a new Tweet list test.
+     */
     public TweetListTest() {
         super(LonelyTwitterActivity.class);
     }
 
+    /**
+     * Test add tweet.
+     */
     public void testAddTweet() {
         TweetList list = new TweetList();
-
-        //assertTrue(false);
 
         Tweet tweet = new NormalTweet("Hello!");
         list.add(tweet);
@@ -30,6 +35,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
 
     }
 
+    /**
+     * Test has tweet.
+     */
     public void testHasTweet() {
         TweetList list = new TweetList();
 
@@ -38,6 +46,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertTrue(list.hasTweet(tweet));
     }
 
+    /**
+     * Test get tweet.
+     */
     public void testGetTweet() {
         TweetList list = new TweetList();
 
@@ -51,6 +62,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertEquals(b, list.getTweet(1));
     }
 
+    /**
+     * Test get tweets.
+     */
     public void testGetTweets() {
         TweetList list = new TweetList();
 
@@ -86,6 +100,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitte
         assertTrue("Not the same", orderedList.getTweet(2) == c);
     }
 
+    /**
+     * Test get count.
+     */
     public void testGetCount() {
 
         TweetList list = new TweetList();

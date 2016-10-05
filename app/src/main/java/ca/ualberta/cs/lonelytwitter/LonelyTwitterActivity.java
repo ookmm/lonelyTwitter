@@ -1,3 +1,8 @@
+/*
+Copyright (c) 2016 CMPUT 301, University of Alberta - All Rights Reserved.
+You may use, distribute, and copy all parts of this code under terms and conditions of
+University of Alberta and the Code of Student Behaviour.
+ */
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -24,14 +29,27 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * This is the main view class of LonelyTwitter project. <p> It handles all user interactions
+ * as well as file manipulations. </p>
+ * <pre> All the files are stored in the form of "json" files stored in Emulator,
+ * accessible from Android Device Monitor. </pre>
+ * @since 1.0
+ * @see NormalTweet
+ * @author watts1
+ */
+
 public class LonelyTwitterActivity extends Activity {
 
+    /**
+     * This is the file that is being saved / loaded and contains all the tweets.
+     * @see #loadFromFile()
+     * @see #saveInFile()
+     */
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
-
 	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
-
 	private ArrayAdapter<Tweet> adapter;
 
 	/** Called when the activity is first created. */
@@ -45,6 +63,7 @@ public class LonelyTwitterActivity extends Activity {
         Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
+        // Implement Save button
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -57,11 +76,10 @@ public class LonelyTwitterActivity extends Activity {
 				adapter.notifyDataSetChanged();
 
 				saveInFile();
-
 			}
 		});
 
-        // Clear Button
+        // Implement Clear button
         clearButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -76,9 +94,12 @@ public class LonelyTwitterActivity extends Activity {
         });
 	}
 
+    /**
+     * Set up ArrayAdapter to display tweets
+     */
 	@Override
 	protected void onStart() {
-		// TODO Auto-generated method stub
+
 		super.onStart();
         loadFromFile();
 		adapter = new ArrayAdapter<Tweet>(this,
@@ -86,7 +107,12 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
-	private void loadFromFile() {
+    /**
+     * Loads the tweets from FILE_NAME (file.sav)
+     * @throws FileNotFoundException
+     * @exception RuntimeException
+     */
+    private void loadFromFile() {
 		ArrayList<String> tweets = new ArrayList<String>();
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -107,7 +133,10 @@ public class LonelyTwitterActivity extends Activity {
 		}
 
 	}
-	
+
+    /**
+     * Saves tweets to FILE_NAME (file.sav)
+     */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME, 0);
@@ -120,10 +149,8 @@ public class LonelyTwitterActivity extends Activity {
 
 			fos.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			throw  new RuntimeException();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
             throw  new RuntimeException();
 		}
 	}

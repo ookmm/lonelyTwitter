@@ -1,16 +1,21 @@
 package ca.ualberta.cs.lonelytwitter;
 
 /**
- * Created by watts1 on 9/13/16.
+ * Implements important tweets
  */
 public class ImportantTweet extends Tweet {
 
-    public ImportantTweet(String message){
+    /**
+     * Instantiates a new Important tweet.
+     *
+     * @param message
+     */
+    public ImportantTweet(String message) {
         super(message);
     }
 
     @Override
-    public Boolean isImportant(){
+    public Boolean isImportant() {
         return Boolean.TRUE;
     }
 

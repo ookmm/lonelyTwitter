@@ -46,7 +46,7 @@ public class LonelyTwitterActivity extends Activity {
      * @see #loadFromFile()
      * @see #saveInFile()
      */
-	private static final String FILENAME = "file.sav";
+	private static final String FILE_NAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
@@ -115,7 +115,7 @@ public class LonelyTwitterActivity extends Activity {
     private void loadFromFile() {
 		ArrayList<String> tweets = new ArrayList<String>();
 		try {
-			FileInputStream fis = openFileInput(FILENAME);
+			FileInputStream fis = openFileInput(FILE_NAME);
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
 
 			Gson gson = new Gson();
@@ -139,7 +139,7 @@ public class LonelyTwitterActivity extends Activity {
      */
 	private void saveInFile() {
 		try {
-			FileOutputStream fos = openFileOutput(FILENAME, 0);
+			FileOutputStream fos = openFileOutput(FILE_NAME, 0);
 
 			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 

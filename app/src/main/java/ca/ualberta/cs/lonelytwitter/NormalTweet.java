@@ -1,7 +1,7 @@
 package ca.ualberta.cs.lonelytwitter;
 
 /**
- * The type Normal tweet.
+ * Implements the type Normal tweet.
  */
 public class NormalTweet extends Tweet implements Tweetable {
 

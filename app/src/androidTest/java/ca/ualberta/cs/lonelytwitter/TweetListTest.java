@@ -4,7 +4,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The type Tweet list test.
+ * Creates all the test cases for the functions in TweetList.
+ * @see TweetList
  */
 public class TweetListTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
 
